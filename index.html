@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#214d49">
+  <meta name="description" content="Agenda profissional da Rebeca Oliveira, Massoterapeuta.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Rebeca Oliveira · Massoterapeuta</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-lockup"><img class="brand-logo" src="assets/rebeca-logo.png" alt="Logo Rebeca Oliveira Massoterapia e estética"><div><p class="eyebrow">Espaço de cuidado</p><h1>Rebeca Oliveira</h1><span>Massoterapeuta</span></div></div>
+      <nav class="side-nav" aria-label="Navegação principal">
+        <button class="nav-link active" data-view="agenda-view" type="button"><span>▦</span> Agenda</button>
+        <button class="nav-link" data-view="clients-view" type="button"><span>♧</span> Clientes</button>
+        <button class="nav-link" data-view="wallet-view" type="button"><span>◉</span> Carteira</button>
+      </nav>
+      <button id="install-button" class="install-link" type="button"><span>⇩</span> Instalar no celular</button><div class="sidebar-footer"><span class="status-dot"></span> Dados salvos neste aparelho</div>
+    </aside>
+
+    <div class="page-wrap">
+      <header class="mobile-topbar"><img class="brand-logo mobile-logo" src="assets/rebeca-logo.png" alt="Logo Rebeca Oliveira"><div><strong>Rebeca Oliveira</strong><small>Massoterapeuta</small></div><button id="mobile-install" class="icon-button" type="button" aria-label="Instalar no celular">⇩</button></header>
+      <main>
+        <section id="agenda-view" class="view active-view">
+          <div class="page-heading"><div><p class="eyebrow">Visão geral</p><h2>Minha agenda</h2><p id="today-label" class="muted"></p></div><button id="new-appointment-button" class="button button-primary" type="button">+ Novo agendamento</button></div>
+          <div id="today-alert" class="today-alert hidden" role="status"></div>
+          <section class="stats-grid"><article class="stat-card stat-card-accent"><span class="stat-icon">◷</span><div><small>Hoje</small><strong id="today-count">0</strong><span>atendimentos</span></div></article><article class="stat-card"><span class="stat-icon">$</span><div><small>Faturamento do mês</small><strong id="month-income">R$ 0,00</strong><span id="month-summary">entradas registradas</span></div></article><article class="stat-card"><span class="stat-icon">→</span><div><small>Próximo cliente</small><strong id="next-appointment">Nenhum</strong><span id="next-client">Agenda livre</span></div></article></section>
+          <div class="main-grid"><section class="panel calendar-panel"><div class="panel-heading"><div><p class="eyebrow">Planejamento</p><h3>Calendário de atendimentos</h3></div><div class="month-controls"><button id="previous-month" class="icon-button" type="button" aria-label="Mês anterior">‹</button><strong id="calendar-month"></strong><button id="next-month" class="icon-button" type="button" aria-label="Próximo mês">›</button></div></div><div id="calendar" class="calendar"></div><div class="list-heading"><div><p class="eyebrow">Detalhes do dia</p><h3 id="selected-day-title">Atendimentos</h3></div><select id="appointment-filter" aria-label="Filtrar atendimentos"><option value="all">Todos</option><option value="pending">Pendentes</option><option value="done">Concluídos</option></select></div><div id="appointment-list" class="appointment-list"></div></section><aside class="panel quick-panel"><div class="panel-heading"><div><p class="eyebrow">Acesso rápido</p><h3>Organização</h3></div><span class="panel-symbol">✦</span></div><button class="quick-action" data-open-view="clients-view" type="button"><span class="quick-icon">♧</span><span><strong>Clientes</strong><small>Cadastre nomes e anotações</small></span><b>›</b></button><button class="quick-action" id="open-wallet-button" type="button"><span class="quick-icon">◉</span><span><strong>Minha carteira</strong><small>Entradas, saídas e saldo</small></span><b>›</b></button><div class="rank-card"><div class="rank-heading"><div><p class="eyebrow">Frequência</p><h3>Clientes que mais visitam</h3></div><span>Top 5</span></div><div id="mini-ranking"></div><button class="text-button" data-open-view="clients-view" type="button">Ver todos os clientes →</button></div></aside></div>
+        </section>
+
+        <section id="clients-view" class="view">
+          <div class="page-heading"><div><p class="eyebrow">Relacionamento</p><h2>Clientes</h2><p class="muted">Anotações e histórico ficam salvos no aparelho.</p></div><button id="new-client-button" class="button button-primary" type="button">+ Novo cliente</button></div>
+          <div class="clients-layout"><section class="panel"><div class="toolbar"><div class="search-box"><span>⌕</span><input id="client-search" type="search" placeholder="Buscar cliente..."></div><span id="client-count" class="muted"></span></div><div id="client-list" class="client-list"></div></section><aside class="panel ranking-panel"><div class="panel-heading"><div><p class="eyebrow">Frequência de visitas</p><h3>Ranking do salão</h3></div><span class="panel-symbol">↗</span></div><p class="muted ranking-intro">A posição é calculada automaticamente pelo número de atendimentos registrados.</p><div id="full-ranking"></div></aside></div>
+        </section>
+
+        <section id="wallet-view" class="view">
+          <div class="page-heading"><div><p class="eyebrow">Controle financeiro</p><h2>Minha carteira</h2><p class="muted">Acompanhe o que entrou e o que saiu.</p></div><div class="wallet-actions"><button id="income-button" class="button button-income" type="button">+ Entrada</button><button id="expense-button" class="button button-expense" type="button">− Saída</button></div></div>
+          <div class="wallet-layout"><section class="panel wallet-summary-panel"><label class="field-label" for="wallet-month">Visualizar mês</label><input id="wallet-month" class="input" type="month"><div class="wallet-total"><span>Saldo disponível no mês</span><strong id="wallet-total">R$ 0,00</strong><small>Entradas menos saídas</small></div><div class="wallet-breakdown"><div><span class="dot dot-income"></span><span>Entradas</span><strong id="wallet-income">R$ 0,00</strong></div><div><span class="dot dot-expense"></span><span>Saídas</span><strong id="wallet-expenses">R$ 0,00</strong></div></div></section><section class="panel"><div class="list-heading"><div><p class="eyebrow">Histórico</p><h3>Movimentações</h3></div><button id="clear-transactions" class="text-button danger-text" type="button">Limpar mês</button></div><div id="transaction-list" class="transaction-list"></div></section></div>
+        </section>
+      </main>
+    </div>
+    <nav class="mobile-nav"><button class="nav-link active" data-view="agenda-view" type="button"><span>▦</span><small>Agenda</small></button><button class="nav-link" data-view="clients-view" type="button"><span>♧</span><small>Clientes</small></button><button class="nav-link" data-view="wallet-view" type="button"><span>◉</span><small>Carteira</small></button></nav>
+  </div>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+  <section id="appointment-modal" class="modal-card hidden" role="dialog" aria-modal="true" aria-labelledby="appointment-modal-title"><form id="appointment-form"><div class="modal-heading"><div><p class="eyebrow">Novo registro</p><h3 id="appointment-modal-title">Agendar massagem</h3></div><button class="close-button" data-close-modal type="button">×</button></div><div class="form-grid"><label>Cliente<select id="appointment-client" class="input"><option value="new">+ Cadastrar novo cliente</option></select></label><label>Novo nome (se necessário)<input id="appointment-new-client" class="input" placeholder="Ex.: Ana Souza"></label><label>Tipo de massagem<input id="massage-type" class="input" placeholder="Ex.: Relaxante"></label><label>Data<input id="appointment-date" class="input" type="date" required></label><label>Horário<input id="appointment-time" class="input" type="time" required></label><label>Valor da massagem<input id="appointment-value" class="input" type="number" min="0" step="0.01" required placeholder="0,00"></label><label class="full-width">Anotação deste atendimento<textarea id="appointment-notes" class="input" rows="3" placeholder="Preferências, cuidados ou observações..."></textarea></label></div><div class="modal-footer"><button class="button button-secondary" data-close-modal type="button">Cancelar</button><button class="button button-primary" type="submit">Salvar agendamento</button></div></form></section>
+  <section id="client-modal" class="modal-card hidden" role="dialog" aria-modal="true" aria-labelledby="client-modal-title"><form id="client-form"><div class="modal-heading"><div><p class="eyebrow">Ficha da cliente</p><h3 id="client-modal-title">Novo cliente</h3></div><button class="close-button" data-close-modal type="button">×</button></div><input id="client-id" type="hidden"><label>Nome completo<input id="client-name" class="input" required placeholder="Ex.: Ana Souza"></label><label>Telefone (opcional)<input id="client-phone" class="input" placeholder="(00) 00000-0000"></label><label>Anotações permanentes<textarea id="client-notes" class="input" rows="5" placeholder="Preferências, restrições, cuidados e informações importantes..."></textarea></label><div class="modal-footer"><button class="button button-secondary" data-close-modal type="button">Cancelar</button><button class="button button-primary" type="submit">Salvar ficha</button></div></form></section>
+  <section id="transaction-modal" class="modal-card hidden" role="dialog" aria-modal="true" aria-labelledby="transaction-title"><form id="transaction-form"><div class="modal-heading"><div><p class="eyebrow">Movimentação</p><h3 id="transaction-title">Adicionar entrada</h3></div><button class="close-button" data-close-modal type="button">×</button></div><label>Descrição<input id="transaction-description" class="input" required placeholder="Ex.: Massagem Ana Souza"></label><label>Valor<input id="transaction-value" class="input" type="number" min="0.01" step="0.01" required placeholder="0,00"></label><label>Data<input id="transaction-date" class="input" type="date" required></label><div class="modal-footer"><button class="button button-secondary" data-close-modal type="button">Cancelar</button><button class="button button-primary" type="submit">Salvar movimentação</button></div></form></section>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
